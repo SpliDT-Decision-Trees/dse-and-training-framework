@@ -1,0 +1,1710 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "grafana",
+                    "uid": "-- Grafana --"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 9,
+    "links": [],
+    "panels": [
+        {
+            "datasource": {
+                "default": false,
+                "type": "grafana-postgresql-datasource",
+                "uid": "ee1vvi7pw5lhce"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": true,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisGridShow": true,
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "fillOpacity": 50,
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "pointShape": "circle",
+                        "pointSize": {
+                            "fixed": 8
+                        },
+                        "pointStrokeWidth": 1,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "show": "points"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "f1_score"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "F1 Score"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "num_flows"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "Number of Flows"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "A"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "green",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "B"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "red",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "C"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "purple",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "D"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "yellow",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 10,
+                "x": 2,
+                "y": 0
+            },
+            "id": 1,
+            "options": {
+                "legend": {
+                    "calcs": [
+                        "max"
+                    ],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "mapping": "manual",
+                "series": [
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 0
+                            }
+                        },
+                        "name": {
+                            "fixed": "CAP"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "num_flows"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    },
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 1
+                            }
+                        },
+                        "name": {
+                            "fixed": "LEO"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "num_flows"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    },
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 2
+                            }
+                        },
+                        "name": {
+                            "fixed": "NETBEACON"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "num_flows"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    }
+                ],
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "select *, 1 as id from hypermapper_cic_iot_2023_pcaps1_f10_bayesian_optimization where name = 'cap' order BY f1_score desc limit 10000;",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    },
+                    "table": "influx_data"
+                },
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "hide": false,
+                    "rawQuery": true,
+                    "rawSql": "select *, 0 as id from baseline_cic_iot_2023_pcaps1_f10 where name = 'leo' order BY f1_score desc limit 10000;",
+                    "refId": "B",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                },
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "hide": false,
+                    "rawQuery": true,
+                    "rawSql": "select *, 2 as id from baseline_cic_iot_2023_pcaps1_f10 where name = 'netbeacon' order BY f1_score desc limit 10000;",
+                    "refId": "C",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "F1 Score vs Number of Flows",
+            "type": "xychart"
+        },
+        {
+            "datasource": {
+                "default": false,
+                "type": "grafana-postgresql-datasource",
+                "uid": "ee1vvi7pw5lhce"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": true,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisGridShow": true,
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "fillOpacity": 50,
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "pointShape": "circle",
+                        "pointSize": {
+                            "fixed": 8
+                        },
+                        "pointStrokeWidth": 1,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "show": "points"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "f1_score"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "F1 Score"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "max_depth"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "Maximum Depth"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "A"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "green",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "B"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "red",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "C"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "purple",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "D"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "yellow",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 10,
+                "x": 12,
+                "y": 0
+            },
+            "id": 2,
+            "options": {
+                "legend": {
+                    "calcs": [
+                        "max"
+                    ],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "mapping": "manual",
+                "series": [
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 0
+                            }
+                        },
+                        "name": {
+                            "fixed": "CAP"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "max_depth"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    },
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 1
+                            }
+                        },
+                        "name": {
+                            "fixed": "LEO"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "max_depth"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    },
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 2
+                            }
+                        },
+                        "name": {
+                            "fixed": "NETBEACON"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "max_depth"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    }
+                ],
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "select *, 1 as id from hypermapper_cic_iot_2023_pcaps1_f10_bayesian_optimization where name = 'cap' order BY f1_score desc limit 10000;",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    },
+                    "table": "influx_data"
+                },
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "hide": false,
+                    "rawQuery": true,
+                    "rawSql": "select *, 0 as id from baseline_cic_iot_2023_pcaps1_f10 where name = 'leo' order BY f1_score desc limit 10000;",
+                    "refId": "B",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                },
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "hide": false,
+                    "rawQuery": true,
+                    "rawSql": "select *, 2 as id from baseline_cic_iot_2023_pcaps1_f10 where name = 'netbeacon' order BY f1_score desc limit 10000;",
+                    "refId": "C",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "F1 Score vs Maximum Depth",
+            "type": "xychart"
+        },
+        {
+            "datasource": {
+                "default": false,
+                "type": "grafana-postgresql-datasource",
+                "uid": "ee1vvi7pw5lhce"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": true,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisGridShow": true,
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "fillOpacity": 50,
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "pointShape": "circle",
+                        "pointSize": {
+                            "fixed": 8
+                        },
+                        "pointStrokeWidth": 1,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "show": "points"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "f1_score"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "F1 Score"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "total_features"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "Total Features"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "A"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "green",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "B"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "red",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "C"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "purple",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "D"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "yellow",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 8,
+                "x": 2,
+                "y": 9
+            },
+            "id": 3,
+            "options": {
+                "legend": {
+                    "calcs": [
+                        "max"
+                    ],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "mapping": "manual",
+                "series": [
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 0
+                            }
+                        },
+                        "name": {
+                            "fixed": "CAP"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "total_features"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    },
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 1
+                            }
+                        },
+                        "name": {
+                            "fixed": "LEO"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "total_features"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    },
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 2
+                            }
+                        },
+                        "name": {
+                            "fixed": "NETBEACON"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "total_features"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    }
+                ],
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "select *, 1 as id from hypermapper_cic_iot_2023_pcaps1_f10_bayesian_optimization where name = 'cap' order BY f1_score desc limit 10000;",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    },
+                    "table": "influx_data"
+                },
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "hide": false,
+                    "rawQuery": true,
+                    "rawSql": "select *, 0 as id from baseline_cic_iot_2023_pcaps1_f10 where name = 'leo' order BY f1_score desc limit 10000;",
+                    "refId": "B",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                },
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "hide": false,
+                    "rawQuery": true,
+                    "rawSql": "select *, 2 as id from baseline_cic_iot_2023_pcaps1_f10 where name = 'netbeacon' order BY f1_score desc limit 10000;",
+                    "refId": "C",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "F1 Score vs Total Features",
+            "type": "xychart"
+        },
+        {
+            "datasource": {
+                "default": false,
+                "type": "grafana-postgresql-datasource",
+                "uid": "ee1vvi7pw5lhce"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": true,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisGridShow": true,
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "fillOpacity": 50,
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "pointShape": "circle",
+                        "pointSize": {
+                            "fixed": 8
+                        },
+                        "pointStrokeWidth": 1,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "show": "points"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "f1_score"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "F1 Score"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "num_partitions"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "Number of Partitions"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "A"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "green",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 7,
+                "x": 10,
+                "y": 9
+            },
+            "id": 4,
+            "options": {
+                "legend": {
+                    "calcs": [
+                        "max"
+                    ],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "mapping": "manual",
+                "series": [
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 0
+                            }
+                        },
+                        "name": {
+                            "fixed": "CAP"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "num_partitions"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    }
+                ],
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "select *, 1 as id from hypermapper_cic_iot_2023_pcaps1_f10_bayesian_optimization where name = 'cap' order BY f1_score desc limit 10000;",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    },
+                    "table": "influx_data"
+                },
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "hide": false,
+                    "rawQuery": true,
+                    "rawSql": "select *, 0 as id from hypermapper_cic_iot_2023_pcaps1_f10_bayesian_optimization where name = 'leo' order BY f1_score desc limit 10000;",
+                    "refId": "B",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "CAP: F1 Score vs Number of Partitions",
+            "type": "xychart"
+        },
+        {
+            "datasource": {
+                "default": false,
+                "type": "grafana-postgresql-datasource",
+                "uid": "ee1vvi7pw5lhce"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": true,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisGridShow": true,
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "fillOpacity": 50,
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "pointShape": "circle",
+                        "pointSize": {
+                            "fixed": 8
+                        },
+                        "pointStrokeWidth": 1,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "show": "points"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "f1_score"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "F1 Score"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "feature_limit"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "Feature Limit"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "A"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "green",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 5,
+                "x": 17,
+                "y": 9
+            },
+            "id": 5,
+            "options": {
+                "legend": {
+                    "calcs": [
+                        "max"
+                    ],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "mapping": "manual",
+                "series": [
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 0
+                            }
+                        },
+                        "name": {
+                            "fixed": "CAP"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "feature_limit"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    }
+                ],
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "select *, 1 as id from hypermapper_cic_iot_2023_pcaps1_f10_bayesian_optimization where name = 'cap' order BY f1_score desc limit 10000;",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    },
+                    "table": "influx_data"
+                },
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "hide": false,
+                    "rawQuery": true,
+                    "rawSql": "select *, 0 as id from hypermapper_cic_iot_2023_pcaps1_f10_bayesian_optimization where name = 'leo' order BY f1_score desc limit 10000;",
+                    "refId": "B",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "CAP: F1 Score vs Features Per Partition",
+            "type": "xychart"
+        },
+        {
+            "datasource": {
+                "default": false,
+                "type": "grafana-postgresql-datasource",
+                "uid": "ee1vvi7pw5lhce"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": true,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisGridShow": true,
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "fillOpacity": 50,
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "pointShape": "circle",
+                        "pointSize": {
+                            "fixed": 8
+                        },
+                        "pointStrokeWidth": 1,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "show": "points"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "f1_score"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "F1 Score"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "max_depth"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "Maximum Depth"
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "A"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "green",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "B"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "red",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "C"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "purple",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID",
+                            "options": "D"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "yellow",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 20,
+                "x": 2,
+                "y": 18
+            },
+            "id": 6,
+            "options": {
+                "legend": {
+                    "calcs": [
+                        "max"
+                    ],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "mapping": "manual",
+                "series": [
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 0
+                            }
+                        },
+                        "name": {
+                            "fixed": "CAP"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "iterations"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    },
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 1
+                            }
+                        },
+                        "name": {
+                            "fixed": "LEO"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "max_depth"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    },
+                    {
+                        "frame": {
+                            "matcher": {
+                                "id": "byIndex",
+                                "options": 2
+                            }
+                        },
+                        "name": {
+                            "fixed": "NETBEACON"
+                        },
+                        "x": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "iterations"
+                            }
+                        },
+                        "y": {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "f1_score"
+                            }
+                        }
+                    }
+                ],
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "select *, 1 as id from hypermapper_cic_iot_2023_pcaps1_f10_bayesian_optimization where name = 'cap' order BY f1_score desc limit 10000;",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    },
+                    "table": "influx_data"
+                },
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "hide": false,
+                    "rawQuery": true,
+                    "rawSql": "select *, 0 as id from baseline_cic_iot_2023_pcaps1_f10 where name = 'leo' order BY f1_score desc limit 10000",
+                    "refId": "B",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                },
+                {
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ee1vvi7pw5lhce"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "hide": false,
+                    "rawQuery": true,
+                    "rawSql": "select *, 2 as id from baseline_cic_iot_2023_pcaps1_f10 where name = 'netbeacon' order BY f1_score desc limit 10000;",
+                    "refId": "C",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "F1 Score vs Time ",
+            "type": "xychart"
+        }
+    ],
+    "preload": false,
+    "refresh": "5s",
+    "schemaVersion": 40,
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-7d",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "America/Indiana/Indianapolis",
+    "title": "hypermapper_cic_iot_2023_pcaps1_f10_bayesian_optimization",
+    "uid": "9d4e8f19-4262-4f64-a33f-eb2fb78ea1f7",
+    "version": 5,
+    "weekStart": ""
+}

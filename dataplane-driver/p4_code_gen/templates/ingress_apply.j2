@@ -1,0 +1,22 @@
+// ===== Apply logic =====
+
+{% for f in range(1, num_active_features+1) %}
+f{{ f }}_op_load_table.apply();
+{% endfor %}
+
+if (ig_md.state_index >= 1 && ig_md.state_index <= {{ states_per_feature }}) {
+{% for s in range(1, states_per_feature+1) %}
+    if (ig_md.state_index == {{ s }}) {
+{% for f in range(1, num_active_features+1) %}
+        // bank 0 shown; extend via reg_index_table
+        ig_md.f{{ f }} = feat{{ f }}{{ s }}_sum_b0.execute(ig_md.flow_hash);
+{% endfor %}
+    }
+{% endfor %}
+}
+
+{% for f in range(1, num_active_features+1) %}
+if (ig_md.packet_counter == FLOW_SIZE) {
+    f{{ f }}_table.apply();
+}
+{% endfor %}

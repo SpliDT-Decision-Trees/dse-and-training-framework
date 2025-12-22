@@ -1,0 +1,14 @@
+// ===== Registers =====
+
+// Flow-level metadata
+Register<bit<FEATURE_WIDTH_8>, bit<KEY_SIZE>>(NUM_FLOWS_LARGE) sid_register;
+Register<bit<FEATURE_WIDTH_8>, bit<KEY_SIZE>>(NUM_FLOWS_LARGE) pkt_count_register;
+
+// Per-feature registers (policy-driven)
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+    // Feature f{{ f }}
+{% for r in range(1, GEN_REGS_PER_FEATURE + 1) %}
+Register<bit<FEATURE_WIDTH_32>, bit<KEY_SIZE>>(NUM_FLOWS)
+    f{{ f }}{{ r }}_register;
+{% endfor %}
+{% endfor %}

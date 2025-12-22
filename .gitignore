@@ -1,0 +1,8 @@
+__pycache__
+results/*
+*.pyc
+.vscode
+.DS_Store
+.cursor
+# grafana/rawdb/*
+grafana/redundantdb/*

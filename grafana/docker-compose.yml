@@ -1,0 +1,20 @@
+services:
+  grafana:
+    image: ghcr.io/splidt-decision-trees/grafana:latest
+    container_name: grafana
+    network_mode: host
+    volumes:
+      - ./provisioning:/etc/grafana/provisioning
+
+  database:
+    image: ghcr.io/splidt-decision-trees/postgres:latest
+    container_name: postgres
+    network_mode: host
+    volumes:
+      - ./rawdb:/rawdb
+      - ./redundantdb:/redundantdb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: decision_trees

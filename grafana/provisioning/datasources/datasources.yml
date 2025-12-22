@@ -1,0 +1,13 @@
+apiVersion: 1
+
+datasources:
+  - name: PostgreSQL
+    type: postgres
+    uid: ee1vvi7pw5lhce
+    url: localhost:5432
+    database: decision_trees
+    user: postgres
+    secureJsonData:
+      password: "postgres"
+    jsonData:
+      sslmode: "disable"

@@ -1,0 +1,18 @@
+// ===== Operand Load Tables =====
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+table f{{ f }}_op_load_table {
+    key = {
+        ig_md.sid : exact;
+    }
+    actions = {
+        stateless_operand_load_iat_f{{ f }};
+        stateless_operand_load_pkt_len_f{{ f }};
+        stateless_operand_load_hdr_len_f{{ f }};
+        stateless_operand_load_count_f{{ f }};
+        stateless_operand_load_flow_duration_f{{ f }};
+        NoAction;
+    }
+    size = 33;
+    default_action = NoAction();
+}
+{% endfor %}

@@ -1,0 +1,49 @@
+/*****************************************************************************
+#
+# Copyright 2026
+#   Murayyiam Parvez (Purdue University),
+#   Annus Zulfiqar (University of Michigan),
+#   Roman Beltiukov (University of California, Santa Barbara),
+#   Shir Landau Feibish (The Open University of Israel),
+#   Walter Willinger (NIKSUN Inc.),
+#   Arpit Gupta (University of California, Santa Barbara),
+#   Muhammad Shahbaz (University of Michigan)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# *****************************************************************************/
+
+// SPDX-License-Identifier: Apache-2.0
+/* -*- P4_16 -*- */
+#include <core.p4>
+#include <tna.p4>
+#include "common/headers.p4"
+#include "common/ingress.p4"
+#include "common/egress.p4"
+
+/*************************************************************************
+************************ PIPELINE ****************************************
+*************************************************************************/
+
+/************ S W I T C H   P A C K A G E ******************************/
+
+Pipeline(
+    IngressParser(),
+    Ingress(),
+    IngressDeparser(),
+    EgressParser(),
+    Egress(),
+    EgressDeparser()
+) pipe;
+
+Switch(pipe) main;

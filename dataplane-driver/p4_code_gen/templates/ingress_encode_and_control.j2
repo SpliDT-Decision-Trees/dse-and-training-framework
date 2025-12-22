@@ -1,0 +1,28 @@
+// ===== Feature Encoding Actions =====
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+action f{{ f }}_encode(bit<32> val) {
+    ig_md.f{{ f }}_encoded = val;
+}
+{% endfor %}
+
+// ===== Control Actions =====
+action set_next_sid(bit<FEATURE_WIDTH_8> val) {
+    ig_md.next_sid_value = val;
+    hdr.resubmit_hdr.sid = val;
+}
+
+action emit_digest() {
+    hdr.digest_a.setValid();
+    hdr.digest_a.sid = ig_md.next_sid_value;
+    ig_dprsr_md.digest_type = L2_LEARN_DIGEST;
+}
+
+action recirculate_packet() {
+    hdr.resubmit_hdr.setValid();
+    hdr.resubmit_hdr.srcAddr  = ig_md.src_addr;
+    hdr.resubmit_hdr.dstAddr  = ig_md.dst_addr;
+    hdr.resubmit_hdr.src_port = ig_md.src_port;
+    hdr.resubmit_hdr.dst_port = ig_md.dst_port;
+    hdr.resubmit_hdr.protocol = hdr.ipv4.protocol;
+    ig_tm_md.ucast_egress_port = RECIRCULATE_PORT;
+}

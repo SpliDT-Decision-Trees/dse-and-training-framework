@@ -1,0 +1,15 @@
+// ===== Classifier =====
+table classifier {
+    key = {
+        ig_md.sid : exact;
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+        ig_md.f{{ f }}_encoded : ternary;
+{% endfor %}
+    }
+    actions = {
+        set_next_sid;
+        NoAction;
+    }
+    size = 1024;
+    default_action = NoAction();
+}

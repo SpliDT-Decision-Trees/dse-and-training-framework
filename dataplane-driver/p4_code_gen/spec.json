@@ -1,0 +1,11 @@
+{
+  "num_flows": 100000,
+
+  "features": [
+    { "name": "iat", "width": 32 },
+    { "name": "pkt_len", "width": 32 }
+  ],
+
+  "num_active_features": 2,
+  "states_per_feature": 1
+}

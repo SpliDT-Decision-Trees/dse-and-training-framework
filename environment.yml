@@ -1,0 +1,27 @@
+name: splidt
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.8.10
+  - numpy
+  - pandas=1.5.3           # downgraded for groupby compatibility
+  - scikit-learn
+  - tqdm
+  - pip
+  - dask
+  - graphviz
+  - python-graphviz
+  - psycopg2
+  - pip:
+      - python-box
+      - joblib==1.1.0
+      - matplotlib
+      - seaborn
+      - networkx
+      - ipython
+      - ipykernel
+      - jupyter
+      - tabulate
+      - pydot
+      - hypermapper

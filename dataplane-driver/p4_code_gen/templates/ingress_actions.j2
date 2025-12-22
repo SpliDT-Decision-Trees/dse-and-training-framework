@@ -1,0 +1,65 @@
+// ===== Register Actions =====
+
+// Per-feature, per-register actions
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+{% for r in range(1, GEN_REGS_PER_FEATURE + 1) %}
+
+// -------- Feature f{{ f }}, Register {{ r }} --------
+
+// Sum
+RegisterAction<bit<FEATURE_WIDTH_32>, bit<KEY_SIZE>, bit<FEATURE_WIDTH_32>>
+(f{{ f }}{{ r }}_register) feat{{ f }}{{ r }}_sum = {
+    void apply(inout bit<FEATURE_WIDTH_32> value,
+               out bit<FEATURE_WIDTH_32> read_value) {
+        value = value + ig_md.f{{ f }};
+        read_value = value;
+    }
+};
+
+// Max
+RegisterAction<bit<FEATURE_WIDTH_32>, bit<KEY_SIZE>, bit<FEATURE_WIDTH_32>>
+(f{{ f }}{{ r }}_register) feat{{ f }}{{ r }}_max = {
+    void apply(inout bit<FEATURE_WIDTH_32> value,
+               out bit<FEATURE_WIDTH_32> read_value) {
+        if (value < ig_md.f{{ f }}) {
+            value = ig_md.f{{ f }};
+        }
+        read_value = value;
+    }
+};
+
+// Min
+RegisterAction<bit<FEATURE_WIDTH_32>, bit<KEY_SIZE>, bit<FEATURE_WIDTH_32>>
+(f{{ f }}{{ r }}_register) feat{{ f }}{{ r }}_min = {
+    void apply(inout bit<FEATURE_WIDTH_32> value,
+               out bit<FEATURE_WIDTH_32> read_value) {
+        if (value == 0 || value > ig_md.f{{ f }}) {
+            value = ig_md.f{{ f }};
+        }
+        read_value = value;
+    }
+};
+
+// Init
+RegisterAction<bit<FEATURE_WIDTH_32>, bit<KEY_SIZE>, bit<FEATURE_WIDTH_32>>
+(f{{ f }}{{ r }}_register) feat{{ f }}{{ r }}_init = {
+    void apply(inout bit<FEATURE_WIDTH_32> value,
+               out bit<FEATURE_WIDTH_32> read_value) {
+        value = 0;
+        read_value = value;
+    }
+};
+
+{% endfor %}
+{% endfor %}
+
+
+
+// ===== Stateless operand load actions =====
+{% for f in range(1, num_active_features + 1) %}
+{% for feat in features %}
+action load_{{ feat.name }}_f{{ f }}() {
+    ig_md.f{{ f }} = hdr.features.{{ feat.name }};
+}
+{% endfor %}
+{% endfor %}

@@ -1,0 +1,93 @@
+apply {
+    if (ig_intr_md.ingress_port == RECIRCULATE_PORT) {
+
+        ig_md.src_addr = hdr.resubmit_hdr.srcAddr;
+        ig_md.dst_addr = hdr.resubmit_hdr.dstAddr;
+        ig_md.src_port = hdr.resubmit_hdr.src_port;
+        ig_md.dst_port = hdr.resubmit_hdr.dst_port;
+        ig_md.protocol = hdr.resubmit_hdr.protocol;
+
+        // Hash flow-id
+        hash_packet(
+            ig_md.src_addr,
+            ig_md.dst_addr,
+            ig_md.src_port,
+            ig_md.dst_port,
+            ig_md.protocol
+        );
+
+        ig_md.sid = hdr.resubmit_hdr.sid;
+
+        sid_register.write(ig_md.flow_hash, ig_md.sid);
+        pkt_count_register.write(ig_md.flow_hash, 0);
+
+{% for r in range(1, GEN_REGS_PER_FEATURE + 1) %}
+        {% if r == 1 %}
+        if (ig_md.state_index == {{ r }}) {
+        {% else %}
+        else if (ig_md.state_index == {{ r }}) {
+        {% endif %}
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+            f{{ f }}{{ r }}_op_table.apply();
+{% endfor %}
+        }
+{% endfor %}
+
+    } else {
+
+        ig_md.src_addr = hdr.ipv4.srcAddr;
+        ig_md.dst_addr = hdr.ipv4.dstAddr;
+        ig_md.src_port = hdr.tcp.srcPort;
+        ig_md.dst_port = hdr.tcp.dstPort;
+        ig_md.protocol = hdr.ipv4.protocol;
+
+        if (hdr.ipv4.isValid()) {
+            hash_packet(
+                ig_md.src_addr,
+                ig_md.dst_addr,
+                ig_md.src_port,
+                ig_md.dst_port,
+                ig_md.protocol
+            );
+            reg_index_table.apply();
+        }
+
+        ig_md.sid = sid_register.read(ig_md.flow_hash);
+        ig_md.packet_counter = pkt_count_register.read(ig_md.flow_hash);
+
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+        f{{ f }}_op_load_table.apply();
+{% endfor %}
+
+{% for r in range(1, GEN_REGS_PER_FEATURE + 1) %}
+        {% if r == 1 %}
+        if (ig_md.state_index == {{ r }}) {
+        {% else %}
+        else if (ig_md.state_index == {{ r }}) {
+        {% endif %}
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+            f{{ f }}{{ r }}_op_table.apply();
+{% endfor %}
+        }
+{% endfor %}
+
+    }
+
+    if (ig_md.packet_counter == FLOW_SIZE) {
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+        f{{ f }}_table.apply();
+{% endfor %}
+        classifier.apply();
+    }
+
+    if (hdr.tcp.isValid() && (hdr.tcp.ctrl & 0x01) == 0) {
+        if (ig_md.packet_counter == FLOW_SIZE &&
+            ig_intr_md.ingress_port != RECIRCULATE_PORT) {
+            recirculate_packet();
+        }
+    }
+
+    if (hdr.tcp.isValid() && (hdr.tcp.ctrl & 0x01) != 0) {
+        emit_digest();
+    }
+}

@@ -1,0 +1,21 @@
+// ===== Stateful Feature Operation Tables =====
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+{% for r in range(1, GEN_REGS_PER_FEATURE + 1) %}
+table f{{ f }}{{ r }}_op_table {
+    key = {
+        ig_md.sid : exact;
+        ig_intr_md.ingress_port : exact;
+        hdr.tcp.ctrl : exact;
+    }
+    actions = {
+        stateful_action_sum_f{{ f }}{{ r }};
+        stateful_action_init_f{{ f }}{{ r }};
+        stateful_action_min_f{{ f }}{{ r }};
+        stateful_action_max_f{{ f }}{{ r }};
+        NoAction;
+    }
+    size = 50;
+    default_action = NoAction();
+}
+{% endfor %}
+{% endfor %}

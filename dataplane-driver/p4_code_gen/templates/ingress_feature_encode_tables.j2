@@ -1,0 +1,15 @@
+// ===== Feature Encoding Tables =====
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+table f{{ f }}_table {
+    key = {
+        ig_md.sid : exact;
+        ig_md.f{{ f }} : ternary;
+    }
+    actions = {
+        f{{ f }}_encode;
+        NoAction;
+    }
+    size = 2560;
+    default_action = NoAction();
+}
+{% endfor %}

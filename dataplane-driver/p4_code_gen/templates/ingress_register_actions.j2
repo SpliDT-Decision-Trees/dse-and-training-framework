@@ -1,0 +1,61 @@
+// ===== Register Actions =====
+
+// Packet counter increment
+RegisterAction<bit<FEATURE_WIDTH_8>, bit<KEY_SIZE>, bit<FEATURE_WIDTH_8>>
+(pkt_count_register) increment_counter = {
+    void apply(inout bit<FEATURE_WIDTH_8> value,
+               out bit<FEATURE_WIDTH_8> read_value) {
+        value = value + 1;
+        read_value = value;
+    }
+};
+
+{% for f in range(1, GEN_NUM_ACTIVE_FEATURES + 1) %}
+{% for r in range(1, GEN_REGS_PER_FEATURE + 1) %}
+
+// init
+RegisterAction<bit<FEATURE_WIDTH_32>, bit<KEY_SIZE>, bit<FEATURE_WIDTH_32>>
+(f{{ f }}{{ r }}_register) feat{{ f }}{{ r }}_init = {
+    void apply(inout bit<FEATURE_WIDTH_32> value,
+               out bit<FEATURE_WIDTH_32> read_value) {
+        value = 0;
+        read_value = value;
+    }
+};
+
+// sum
+RegisterAction<bit<FEATURE_WIDTH_32>, bit<KEY_SIZE>, bit<FEATURE_WIDTH_32>>
+(f{{ f }}{{ r }}_register) feat{{ f }}{{ r }}_sum = {
+    void apply(inout bit<FEATURE_WIDTH_32> value,
+               out bit<FEATURE_WIDTH_32> read_value) {
+        value = value + ig_md.f{{ f }};
+        read_value = value;
+    }
+};
+
+// min
+RegisterAction<bit<FEATURE_WIDTH_32>, bit<KEY_SIZE>, bit<FEATURE_WIDTH_32>>
+(f{{ f }}{{ r }}_register) feat{{ f }}{{ r }}_min = {
+    void apply(inout bit<FEATURE_WIDTH_32> value,
+               out bit<FEATURE_WIDTH_32> read_value) {
+        if (value > ig_md.f{{ f }} || value == 0) {
+            value = ig_md.f{{ f }};
+        }
+        read_value = value;
+    }
+};
+
+// max
+RegisterAction<bit<FEATURE_WIDTH_32>, bit<KEY_SIZE>, bit<FEATURE_WIDTH_32>>
+(f{{ f }}{{ r }}_register) feat{{ f }}{{ r }}_max = {
+    void apply(inout bit<FEATURE_WIDTH_32> value,
+               out bit<FEATURE_WIDTH_32> read_value) {
+        if (value < ig_md.f{{ f }}) {
+            value = ig_md.f{{ f }};
+        }
+        read_value = value;
+    }
+};
+
+{% endfor %}
+{% endfor %}

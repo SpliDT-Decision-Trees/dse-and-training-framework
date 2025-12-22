@@ -1,0 +1,46 @@
+---
+
+
+DATASET_PATH: "/home/annuszulfiqar/research/NetEye/ready-to-train-datasets"
+DATASET_NAME: "CIC-IOT-2023-PCAPS1-f50"
+DATASET_FORMAT: "CIC-IOT-2023_Flow_v{}_c{}.csv"
+DATASET_DEST: "generated"
+DATASET_CLASSES: 4
+
+TREE_DIR: "not-needed-anymore"
+SAVE_TREES: False
+
+HYPERMAPPER_PATH: "/home/annuszulfiqar/research/NetEye/hypermapper/scripts/hypermapper.py"
+RANDOM_SAMPLES: 200
+ITERATIONS: 500
+# options: "bayesian_optimization", "random_scalarizations", "local_search", "prior_guided_optimization", "evolutionary_optimization"
+OPTIMIZER: "bayesian_optimization"
+
+# BO options: "EI", "PI", "LCB"
+ACQUISITION_FUNCTION: "EI"
+# BO options: "linear", "tchebyshev", "modified_tchebyshev"
+SCALARIZATION_METHOD: "tchebyshev"
+# LS options
+LOCAL_SEARCH_STARTING_POINTS: 10
+LOCAL_SEARCH_RANDOM_POINTS: 10000
+LOCAL_SEARCH_EVALUATION_LIMIT: 1000
+LOCAL_SEARCH_SCALARIZATION_WEIGHTS: [1.0]
+# EV options
+EVOLUTION_POPULATION_SIZE: 50
+EVOLUTION_GENERATIONS: 200
+MUTATION_RATE: 2
+BATCH_SIZE: 3
+EVOLUTION_CROSSOVER: True
+REGULARIZE_EVOLUTION: True
+
+# partitions for decision tree
+NUM_PARTITIONS: [1, 2, 3, 4, 5, 6, 7]
+
+# dashboard db parameters
+DB_NAME: "hypermapper"
+TABLE_NAME: 'bayesian'
+
+# parallel evaluation processes
+PROCESSES: 16
+
+
